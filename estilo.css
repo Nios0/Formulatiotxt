@@ -1,0 +1,145 @@
+#textNombre , #textApellido,#textTelefono,#textDireccion,#textPuesto{
+    width:250px;
+    height: 20px;
+    border:1px solid black;
+}
+body{
+    background-image:url("fondo.jpg") ;
+}
+
+
+#lbnom{
+    top:30px;
+    left: 120px;
+    width:70px;
+    height: 25px;
+    background-color:lightgray;
+    position: absolute;
+    font-size: 20px;
+}
+
+#textNombre{
+    top:60px;
+    left:30px;
+    background-color:rgba(243, 241, 241, 0.473);
+    position: absolute;
+    text-align: center;
+}
+
+#textApellido{
+    left: 30px;
+    top:120px;
+    background-color:rgba(243, 241, 241, 0.473);
+    position: absolute;
+    text-align: center;
+}
+
+#lbapellido{
+    top:90px;
+    left: 120px;
+    width:70px;
+    height: 25px;
+    font-size: 20px;
+    background-color:lightgray;
+   
+    position: absolute;
+}
+
+#lbtel{
+    top:150px;
+    left: 120px;
+    width:70px;
+    height: 25px;
+    font-size: 20px;
+    background-color:lightgray;
+    position: absolute;
+}
+#textTelefono{
+    left: 30px;
+    top:180px;
+    background-color:rgba(243, 241, 241, 0.473);
+    position: absolute;
+    text-align: center;
+}
+
+#lbdire{
+    top:210px;
+    width:78px;
+    left: 120px;
+    height: 25px;
+    font-size: 20px;
+    background-color:lightgray;
+    position: absolute;
+}
+
+#textDireccion{
+    left: 30px;
+    top:240px;
+    background-color:rgba(243, 241, 241, 0.473);
+    position: absolute;
+    text-align: center;
+}
+
+#lbpues{
+    top:270px;
+    width:70px;
+    left: 120px;
+    height: 25px;
+    font-size: 20px;
+    background-color:lightgray;
+    position: absolute;
+}
+ 
+#textPuesto{
+    left: 30px;
+    top:300px;
+    background-color:rgba(243, 241, 241, 0.473);
+    
+    position: absolute;
+    text-align: center;
+}
+ 
+#boton-txt{
+    text-decoration: none;
+    padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: helvetica;
+    font-weight: 300;
+    font-size: 25px;
+    font-style: italic;
+    color: #006505;
+    background-color: #82b085;
+    border-radius: 15px;
+    border: 3px double #006505;
+    position: absolute;
+    left: 400px;
+    top:480px;
+}
+
+#boton-txt:hover{
+    opacity: 0.6;
+    text-decoration: none;
+}
+
+#ext{
+    width:300px;
+    height: 490px;
+    left: 320px;
+    background-color:rgba(20, 20, 20, 0.685);
+    border: 4px dotted rgb(12, 12, 12);
+    margin:10px;
+    padding:10px;
+    position: absolute;
+  }
+
+  #logo{
+      position: absolute;
+      left: 790px;
+  }
+
+  h1{
+     
+      color:rgb(247, 243, 243);
+      text-shadow: 7px 4px 5px rgb(234, 236, 94)
+  }

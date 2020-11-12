@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="estilo.css" />
+  <title>Document</title>
+</head>
+<body>
+ ><h1>Fomulario de Solicitud</h1>
+<div id="ext">
+    
+    <form id="form1" name="form1">
+    <label for="textNombre" id="lbnom">Nombre:</label>
+    <input type="text" id="textNombre" value="">
+    <br/>
+    <label for="textApellido" id="lbapellido">Apellidos:</label>
+    <input type="text" id="textApellido"  value=""/>
+    <br/>
+    <br/>
+    <label for="textTelefono" id="lbtel">Teléfono:</label>
+    <input type="text" id="textTelefono"  value=""/>
+    <br/>
+    <br/>
+    <label for="textDireccion" id="lbdire">Direccion:</label>
+    <input type="text" id="textDireccion"  value=""/>
+    <br/>
+    <br/>
+    <label for="textPuesto" id="lbpues">Puesto:</label>
+    <input type="text" id="textPuesto"  value=""/>
+    <br/>
+
+</div>
+<br/>
+<input type="button" id="boton-txt" value="Descargar TXT" />
+<br/>
+</form>
+<img src="logo.png" id="logo">
+</body>
+
+<script>
+  function descargarArchivo(contenidoEnBlob, nombreArchivo) {
+    var reader = new FileReader();
+    reader.onload = function (event) {
+        var save = document.createElement('a');
+        save.href = event.target.result;
+        save.target = '_blank';
+        save.download = nombreArchivo || 'archivo.dat';
+        var clicEvent = new MouseEvent('click', {
+            'view': window,
+                'bubbles': true,
+                'cancelable': true
+        });
+        save.dispatchEvent(clicEvent);
+        (window.URL || window.webkitURL).revokeObjectURL(save.href);
+    };
+    reader.readAsDataURL(contenidoEnBlob);
+};
+
+//Función de ayuda: reúne los datos a exportar en un solo objeto
+function obtenerDatos() {
+    return {
+        nombre: document.getElementById('textNombre').value,
+        apellido: document.getElementById('textApellido').value,
+        telefono: document.getElementById('textTelefono').value,
+        direccion: document.getElementById('textDireccion').value,
+        puesto : document.getElementById('textPuesto').value,
+        fecha: (new Date()).toLocaleDateString()
+    };
+};
+
+//Función de ayuda: "escapa" las entidades XML necesarias
+//para los valores (y atributos) del archivo XML
+function escaparXML(cadena) {
+    if (typeof cadena !== 'string') {
+        return '';
+    };
+    cadena = cadena.replace('&', '&amp;')
+        .replace('<', '&lt;')
+        .replace('>', '&gt;')
+        .replace('"', '&quot;');
+    return cadena;
+};
+
+//Genera un objeto Blob con los datos en un archivo TXT
+function generarTexto(datos) {
+    var texto = [];
+    texto.push('Datos Personales:\n');
+    texto.push('Nombre: ');
+    texto.push(datos.nombre);
+    texto.push('\n');
+    texto.push('Apellido: ');
+    texto.push(datos.apellido);
+    texto.push('\n');
+    texto.push('Teléfono: ');
+    texto.push(datos.telefono);
+    texto.push('\n');
+    texto.push('Direccion: ');
+    texto.push(datos.direccion);
+    texto.push('\n');
+    texto.push('Puesto: ');
+    texto.push(datos.puesto);
+    texto.push('\n');
+    texto.push('Fecha: ');
+    texto.push(datos.fecha);
+    texto.push('\n');
+    //El contructor de Blob requiere un Array en el primer parámetro
+    //así que no es necesario usar toString. el segundo parámetro
+    //es el tipo MIME del archivo
+    return new Blob(texto, {
+        type: 'text/plain'
+    });
+};
+
+
+
+document.getElementById('boton-txt').addEventListener('click', function () {
+    var datos = obtenerDatos();
+    descargarArchivo(generarTexto(datos), 'archivo.txt');
+}, false);
+</script>
+</html>
